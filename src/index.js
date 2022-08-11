@@ -96,7 +96,7 @@ function renderOutputColors(nearestColorDisplayContainerSelection, colorArr) {
     .append('div')
     .attr(
       'class',
-      'border w-full rounded-sm justify-center items-center flex flex-col gap-1 mb-1 bg-gray-100 p-1 py-2',
+      'border w-full rounded-sm justify-center items-center flex flex-col gap-1 mb-1 bg-gray-100 p-1',
     )
   colorName
     .append('div')
@@ -107,7 +107,7 @@ function renderOutputColors(nearestColorDisplayContainerSelection, colorArr) {
     .append('button')
     .attr(
       'class',
-      'justify-center flex items-center gap-1 px-0.5 bg-gray-200 rounded border border-gray-400 text-xs',
+      'w-full justify-center flex items-center gap-1 px-0.5 bg-gray-200 rounded border border-gray-400 text-xs',
     )
     .html(
       `
