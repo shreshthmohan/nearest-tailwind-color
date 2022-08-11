@@ -8,21 +8,7 @@ export const evalDistance = (color1, color2) => {
   return distance
 }
 
-// get all colors
-// get reference color
-
-// reference color list
-// A list with each color having a name
-
 export const nearestColor = (inputColor, referenceColorList) => {
-  // TODO: tackle opacity
-  // For now assuming opacity is 1
-  // And object looks like this:
-  // {r: 10, g: 45, b: 178, opacity: 1}
-
-  // top 3 closest colors
-  // start with #000000
-
   const colorDistance = [
     {
       from: 'black',

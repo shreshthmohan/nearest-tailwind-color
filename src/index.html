@@ -7,22 +7,43 @@
     <title>Nearest Tailwind Colors</title>
   </head>
   <body>
-    <h1 class="">Nearest Tailwind Colors</h1>
-    <p>Tailwind version: <span id="tailwind-version"></span></p>
-
-    <input type="text" id="color-input-text" />
-    <input type="color" id="color-input" />
-    <p>Input color:</p>
-    <ul>
-      <li><span>HEX: </span><span id="show-hex"></span></li>
-      <li><span>RGB: </span><span id="show-rgb"></span></li>
-    </ul>
-    <p id="color-error"></p>
-    <div id="show-color" class="w-12 h-8"></div>
-
     <div>
-      <p>Nearest tailwind color(s):</p>
-      <div id="show-nearest-tailwind-colors-container"></div>
+      <h1 class="">Nearest Tailwind Colors</h1>
+      <p>Tailwind version: <span id="tailwind-version"></span></p>
+
+      <input type="text" id="color-input-text" />
+      <input type="color" id="color-input" />
+      <p>Input color:</p>
+      <ul>
+        <li><span>HEX: </span><span id="show-hex"></span></li>
+        <li><span>RGB: </span><span id="show-rgb"></span></li>
+      </ul>
+      <p id="color-error"></p>
+      <div id="show-color" class="w-12 h-8"></div>
+      <!-- https://play.tailwindcss.com/1bGvf3stbG -->
+      <div class="w-full">
+        <div
+          id="show-nearest-tailwind-colors-container"
+          class="mt-8 mx-auto"
+          style="width: max-content"
+        >
+          <div
+            class="md:rounded-lg ring-1 ring-black ring-opacity-20 overflow-hidden"
+          >
+            <table
+              id="nearest-color-table"
+              class="divide-y divide-gray-300 mx-auto md:rounded-lg"
+            >
+              <thead class="bg-gray-200">
+                <tr class="divide-x divide-gray-300"></tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200 bg-white">
+                <tr class="divide-x"></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
