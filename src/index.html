@@ -7,41 +7,42 @@
     <title>Nearest Tailwind Colors</title>
   </head>
   <body>
-    <div>
-      <h1 class="">Nearest Tailwind Colors</h1>
-      <p>Tailwind version: <span id="tailwind-version"></span></p>
+    <div class="w-full font-serif px-2 md:px-0">
+      <div class="flex justify-center">
+        <div class="my-4 md:my-16 inline-block">
+          <h1 class="text-xl md:text-4xl">
+            Nearest <span class="text-cyan-600">Tailwind CSS</span> Colors
+          </h1>
 
-      <input type="text" id="color-input-text" />
-      <input type="color" id="color-input" />
-      <p>Input color:</p>
-      <ul>
-        <li><span>HEX: </span><span id="show-hex"></span></li>
-        <li><span>RGB: </span><span id="show-rgb"></span></li>
-      </ul>
-      <p id="color-error"></p>
-      <div id="show-color" class="w-12 h-8"></div>
-      <!-- https://play.tailwindcss.com/1bGvf3stbG -->
-      <div class="w-full">
-        <div
-          id="show-nearest-tailwind-colors-container"
-          class="mt-8 mx-auto"
-          style="width: max-content"
-        >
-          <div
-            class="md:rounded-lg ring-1 ring-black ring-opacity-20 overflow-hidden"
-          >
-            <table
-              id="nearest-color-table"
-              class="divide-y divide-gray-300 mx-auto md:rounded-lg"
+          <div class="flex flex-col gap-1 mt-2 md:mt-8 border p-1 rounded-lg">
+            <div
+              class="border md:px-4 p-2 rounded flex flex-col items-center justify-center"
             >
-              <thead class="bg-gray-200">
-                <tr class="divide-x divide-gray-300"></tr>
-              </thead>
-              <tbody class="divide-y divide-gray-200 bg-white">
-                <tr class="divide-x"></tr>
-              </tbody>
-            </table>
+              <label>Find nearest color for</label>
+              <div
+                class="flex items-center gap-2 border p-1 rounded justify-between"
+              >
+                <input id="color-input" type="color" class="w-16 h-8" />
+                <input
+                  id="color-input-text"
+                  type="text"
+                  class="w-28 text-center rounded text-lg py-0.5 border"
+                  placeholder="#fa3491"
+                />
+              </div>
+              <p id="color-error" class="text-xs invisible text-red-500">
+                Invalid color
+              </p>
+              <span id="show-rgb"></span>
+            </div>
+            <div
+              class="grid grid-cols-5 rounded gap-1 font-mono text-sm"
+              id="show-nearest-tailwind-colors-container"
+            ></div>
           </div>
+          <p class="mt-4 text-sm text-gray-400 text-center">
+            Tailwind CSS version: <span id="tailwind-version"></span>
+          </p>
         </div>
       </div>
     </div>
