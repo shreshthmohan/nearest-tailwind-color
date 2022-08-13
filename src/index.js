@@ -19,6 +19,24 @@ const ignoreColors = [
   'blueGray',
 ]
 
+const colorDependentClasses = [
+  'bg-',
+  'text-',
+  'border-',
+  'shadow-',
+  'decoration-',
+  'from-',
+  'to-',
+  'via-',
+  'divide-',
+  'outline-',
+  'ring-',
+  'ring-offset-',
+  'accent-',
+  'caret-',
+  'stroke-',
+]
+
 function flattenColorList(colorList) {
   const flatColorList = []
   Object.keys(colorList).forEach(c => {
