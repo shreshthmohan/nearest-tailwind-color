@@ -1,7 +1,9 @@
+/* global navigator */
+
 import { select, color } from 'd3'
 import colors from 'tailwindcss/colors'
 import pkg from 'tailwindcss/package.json'
-import { nearestColor } from './nearestColor'
+import { distanceDefinitions, nearestColor } from './nearestColor'
 import './styles/tailwind.css'
 
 select('#tailwind-version').text(pkg.version)
@@ -41,14 +43,45 @@ const colorInputText = select('#color-input-text').attr('value', defaultColor)
 const colorInput = select('#color-input').attr('value', defaultColor)
 const showColor = select('#show-color')
 const colorError = select('#color-error')
-const showHex = select('#show-hex')
 const showRgb = select('#show-rgb')
 const showNearestTailwindColorContainer = select(
   '#show-nearest-tailwind-colors-container',
 )
 
+const differenceDefinitionSelect = select('#difference-definition')
+
+let chosenDistanceDefinition = Object.keys(distanceDefinitions)[0]
+
+// distanceDefinitions
+differenceDefinitionSelect
+  .selectAll('option')
+  .data(Object.keys(distanceDefinitions))
+  .join('option')
+  .attr('value', d => d)
+  .text(d => d)
+let inputColor = defaultColor
+
+differenceDefinitionSelect.on('change', e => {
+  chosenDistanceDefinition = e.target.value
+
+  const nearestTwColors = nearestColor(
+    inputColor,
+    flatColorList,
+    chosenDistanceDefinition,
+  )
+  renderOutputColors(
+    showNearestTailwindColorContainer,
+    nearestTwColors,
+    chosenDistanceDefinition,
+  )
+})
+
 const nearestTwColors = nearestColor(defaultColor, flatColorList)
-renderOutputColors(showNearestTailwindColorContainer, nearestTwColors)
+renderOutputColors(
+  showNearestTailwindColorContainer,
+  nearestTwColors,
+  chosenDistanceDefinition,
+)
 
 colorInput.on('change input', e => {
   colorInputText.property('value', e.target.value)
@@ -56,8 +89,13 @@ colorInput.on('change input', e => {
 
   // showHex.text(color(e.target.value).formatHex())
   showRgb.text(color(e.target.value).formatRgb())
+  inputColor = e.target.value
 
-  const nearestTwColors = nearestColor(e.target.value, flatColorList)
+  const nearestTwColors = nearestColor(
+    e.target.value,
+    flatColorList,
+    chosenDistanceDefinition,
+  )
 
   colorError.classed('visible', false).classed('invisible', true)
   renderOutputColors(showNearestTailwindColorContainer, nearestTwColors)
@@ -67,7 +105,12 @@ colorInputText.on('change input', e => {
   const parsedColor = color(e.target.value)
   if (parsedColor) {
     colorInput.property('value', parsedColor.formatHex())
-    const nearestTwColors = nearestColor(parsedColor, flatColorList)
+    const nearestTwColors = nearestColor(
+      parsedColor,
+      flatColorList,
+      chosenDistanceDefinition,
+    )
+    inputColor = e.target.value
     renderOutputColors(showNearestTailwindColorContainer, nearestTwColors)
     colorError.classed('visible', false).classed('invisible', true)
     showRgb.text(color(e.target.value).formatRgb())
@@ -84,7 +127,7 @@ function renderOutputColors(nearestColorDisplayContainerSelection, colorArr) {
     .join('div')
     .attr(
       'class',
-      'rounded-sm col-span-1 flex flex-col items-center p-2 border py-4 md:px-4',
+      'rounded col-span-1 flex flex-col items-center p-2 border py-4 md:px-4',
     )
 
   individialNearbyColor

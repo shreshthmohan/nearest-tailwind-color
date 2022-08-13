@@ -1,39 +1,47 @@
 import { color } from 'd3'
+import {
+  evalEuclideanDistance,
+  evalNonLinearApproximationDistance,
+  evalRedmeanApproximationDistance,
+} from './colorDistance'
 
-export const evalDistance = (color1, color2) => {
-  const { r: r1, g: g1, b: b1 } = color1
-  const { r: r2, g: g2, b: b2 } = color2
-  const distance = Math.sqrt((r1 - r2) ** 2 + (g1 - g2) ** 2 + (b1 - b2) ** 2)
-
-  return distance
+export const distanceDefinitions = {
+  'redmean-smooth': evalRedmeanApproximationDistance,
+  'simple': evalEuclideanDistance,
+  'redmean-abrupt': evalNonLinearApproximationDistance,
 }
 
-export const nearestColor = (inputColor, referenceColorList) => {
+export const nearestColor = (
+  inputColor,
+  referenceColorList,
+  definition = 'redmean-smooth',
+) => {
+  const evalDistance = distanceDefinitions[definition]
   const colorDistance = [
     {
-      from: 'black',
-      fromValue: '#000',
-      distance: evalDistance(color(inputColor), color('#000')),
+      from: 'white',
+      fromValue: '#fff',
+      distance: evalDistance(color(inputColor), color('#fff')),
     },
     {
-      from: 'black',
-      fromValue: '#000',
-      distance: evalDistance(color(inputColor), color('#000')),
+      from: 'white',
+      fromValue: '#fff',
+      distance: evalDistance(color(inputColor), color('#fff')),
     },
     {
-      from: 'black',
-      fromValue: '#000',
-      distance: evalDistance(color(inputColor), color('#000')),
+      from: 'white',
+      fromValue: '#fff',
+      distance: evalDistance(color(inputColor), color('#fff')),
     },
     {
-      from: 'black',
-      fromValue: '#000',
-      distance: evalDistance(color(inputColor), color('#000')),
+      from: 'white',
+      fromValue: '#fff',
+      distance: evalDistance(color(inputColor), color('#fff')),
     },
     {
-      from: 'black',
-      fromValue: '#000',
-      distance: evalDistance(color(inputColor), color('#000')),
+      from: 'white',
+      fromValue: '#fff',
+      distance: evalDistance(color(inputColor), color('#fff')),
     },
   ]
 
