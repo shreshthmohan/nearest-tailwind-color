@@ -21,25 +21,41 @@
               class="flex flex-col md:flex-row w-full justify-center border md:px-4 p-2 rounded gap-2"
             >
               <div class="flex flex-col items-center justify-center">
-                <label>Find nearest color for</label>
                 <div
                   class="flex items-center gap-2 border p-1 rounded justify-between"
                 >
-                  <input id="color-input" type="color" class="w-16 h-8" />
-                  <input
-                    id="color-input-text"
-                    type="text"
-                    class="w-28 text-center rounded text-lg py-0.5 border"
-                    placeholder="#fa3491"
-                  />
+                  <div
+                    class="flex flex-col items-center justify-center border p-1"
+                  >
+                    <label class="text-sm" for="color-input"
+                      >Choose color in picker</label
+                    >
+                    <input id="color-input" type="color" class="w-16 h-8" />
+                  </div>
+                  <span>or</span>
+                  <div
+                    class="flex flex-col justify-center items-center border p-1"
+                  >
+                    <label class="text-sm" for="color-input-text"
+                      >Type a hex, rgb, or hsl color</label
+                    >
+                    <input
+                      id="color-input-text"
+                      type="text"
+                      class="w-28 text-center text-lg py-0.5 border"
+                      placeholder="#fa3491"
+                    />
+                  </div>
                 </div>
-                <p id="color-error" class="text-xs invisible text-red-500">
+                <p id="color-error" class="text-sm invisible text-red-500">
                   Invalid color
                 </p>
                 <span id="show-rgb"></span>
+                <span id="show-hex"></span>
+                <!-- <span id="show-hsl"></span> -->
               </div>
               <div class="flex flex-col items-center">
-                <label for="difference-definition">
+                <label for="difference-definition" class="text-sm">
                   Color difference definition
                 </label>
                 <select
@@ -48,7 +64,9 @@
                 ></select>
               </div>
               <div class="flex flex-col items-center">
-                <label for="class-variant">Choose class variant</label>
+                <label for="class-variant" class="text-sm"
+                  >Choose class variant</label
+                >
                 <select id="class-variant" class="border rounded"></select>
               </div>
             </div>
