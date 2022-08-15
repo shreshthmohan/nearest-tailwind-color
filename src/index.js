@@ -20,6 +20,7 @@ const ignoreColors = [
 ]
 
 const colorDependentClasses = [
+  '',
   'bg-',
   'text-',
   'border-',
@@ -36,6 +37,8 @@ const colorDependentClasses = [
   'caret-',
   'stroke-',
 ]
+
+let chosenClassVariant = colorDependentClasses[1]
 
 function flattenColorList(colorList) {
   const flatColorList = []
@@ -145,7 +148,7 @@ function renderOutputColors(nearestColorDisplayContainerSelection, colorArr) {
     .join('div')
     .attr(
       'class',
-      'rounded col-span-1 flex flex-col items-center p-2 border py-4 md:px-4',
+      'rounded col-span-1 flex flex-col items-center p-2 border md:p-4',
     )
 
   individialNearbyColor
@@ -157,12 +160,12 @@ function renderOutputColors(nearestColorDisplayContainerSelection, colorArr) {
     .append('div')
     .attr(
       'class',
-      'border w-full rounded-sm justify-center items-center flex flex-col gap-1 mb-1 bg-gray-100 p-1',
+      'border w-full rounded justify-center items-center flex flex-col gap-1 mb-1 bg-gray-100 p-1',
     )
   colorName
     .append('div')
-    .text(d => d.from)
-    .attr('class', 'font-semibold')
+    .text(d => `${d.from}`)
+    .attr('class', 'font-semibold text-xs md:text-sm')
 
   colorName
     .append('button')
@@ -179,11 +182,27 @@ function renderOutputColors(nearestColorDisplayContainerSelection, colorArr) {
       `,
     )
     .on('click', (e, d) => {
-      navigator.clipboard.writeText(d.from)
+      navigator.clipboard.writeText(`${chosenClassVariant}${d.from}`)
     })
   individialNearbyColor.append('div').text(d => d.fromValue)
   individialNearbyColor
     .append('div')
     .text(d => `distance: ${d.distance.toFixed(0)}`)
-    .attr('class', 'text-xs text-gray-600 mt-2')
+    .attr('class', 'text-xs text-gray-600 mt-2 hidden md:block')
 }
+
+// colorDependentClasses
+
+const classVariantSelect = select('#class-variant')
+classVariantSelect
+  .selectAll('option')
+  .data(colorDependentClasses)
+  .join('option')
+  .attr('value', d => d)
+  .text(d => (d ? d : 'none'))
+
+classVariantSelect.property('value', chosenClassVariant)
+
+classVariantSelect.on('change', e => {
+  chosenClassVariant = e.target.value
+})
