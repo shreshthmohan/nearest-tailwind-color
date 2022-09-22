@@ -4,28 +4,35 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark light" />
     <title>Nearest Tailwind Colors</title>
   </head>
   <body>
-    <div class="w-full font-serif px-2 md:px-0 text-gray-700">
+    <div
+      class="w-full font-serif px-2 md:px-0 text-gray-700 dark:text-slate-200"
+    >
       <div class="flex justify-center">
         <div class="my-4 md:my-16 inline-block">
-          <div class="rounded-lg border p-1">
-            <h1 class="text-xl md:text-4xl text-center border rounded py-3">
+          <div class="rounded-lg dark:border-gray-700 border p-1">
+            <h1
+              class="text-xl md:text-4xl text-center dark:border-gray-700 border rounded py-3"
+            >
               Nearest Tailwind CSS Colors
             </h1>
           </div>
 
-          <div class="flex flex-col gap-1 mt-4 border p-1 rounded-lg">
+          <div
+            class="flex flex-col gap-1 mt-4 dark:border-gray-700 border p-1 rounded-lg"
+          >
             <div
-              class="flex flex-col md:flex-row w-full justify-center border md:px-4 p-2 rounded gap-2"
+              class="flex flex-col md:flex-row w-full justify-center dark:border-gray-700 border md:px-4 p-2 rounded gap-2"
             >
               <div class="flex flex-col items-center justify-center">
                 <div
-                  class="flex items-center gap-2 border p-1 rounded justify-between"
+                  class="flex items-center gap-2 dark:border-gray-700 border p-1 rounded justify-between"
                 >
                   <div
-                    class="flex flex-col items-center justify-center border p-1 h-full"
+                    class="flex flex-col items-center justify-center dark:border-gray-700 border p-1 h-full"
                   >
                     <label class="text-sm" for="color-input"
                       >Choose color in picker</label
@@ -34,7 +41,7 @@
                   </div>
                   <span>or</span>
                   <div
-                    class="flex flex-col justify-center items-center border p-1"
+                    class="flex flex-col justify-center items-center dark:border-gray-700 border p-1"
                   >
                     <label class="text-sm" for="color-input-text"
                       >Type a hex, rgb, or hsl color</label
@@ -42,7 +49,7 @@
                     <input
                       id="color-input-text"
                       type="text"
-                      class="w-28 text-center text-lg py-0.5 border"
+                      class="w-28 text-center text-lg py-0.5 dark:border-gray-700 border"
                       placeholder="#fa3491"
                     />
                   </div>
@@ -60,14 +67,17 @@
                 </label>
                 <select
                   id="difference-definition"
-                  class="border rounded"
+                  class="dark:border-gray-700 border rounded"
                 ></select>
               </div>
               <div class="flex flex-col items-center">
                 <label for="class-variant" class="text-sm"
                   >Choose class variant</label
                 >
-                <select id="class-variant" class="border rounded"></select>
+                <select
+                  id="class-variant"
+                  class="dark:border-gray-700 border rounded"
+                ></select>
               </div>
             </div>
             <div

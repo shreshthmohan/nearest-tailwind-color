@@ -158,19 +158,22 @@ function renderOutputColors(nearestColorDisplayContainerSelection, colorArr) {
     .join('div')
     .attr(
       'class',
-      'rounded col-span-1 flex flex-col items-center p-2 border md:p-4',
+      'rounded col-span-1 flex flex-col items-center p-2 dark:border-gray-700 border md:p-4',
     )
 
   individialNearbyColor
     .append('div')
-    .attr('class', 'w-full h-8 bg-gray-300 rounded mb-2')
+    .attr(
+      'class',
+      'w-full h-8 bg-gray-300 dark:bg-gray-800 rounded mb-2 border dark:border-gray-400 border-gray-600',
+    )
     .style('background-color', d => d.fromValue)
 
   const colorName = individialNearbyColor
     .append('div')
     .attr(
       'class',
-      'border w-full rounded justify-center items-center flex flex-col gap-1 mb-1 bg-gray-100 p-1',
+      'border dark:border-gray-700 w-full rounded justify-center items-center flex flex-col gap-1 mb-1 bg-gray-100 dark:bg-gray-800 p-1',
     )
   colorName
     .append('div')
@@ -181,7 +184,7 @@ function renderOutputColors(nearestColorDisplayContainerSelection, colorArr) {
     .append('button')
     .attr(
       'class',
-      'w-full justify-center flex items-center gap-1 px-0.5 bg-gray-200 rounded border border-gray-400 text-xs',
+      'w-full justify-center flex items-center gap-1 px-0.5  rounded border border-gray-400 dark:border-gray-600 text-xs',
     )
     .html(
       `
@@ -198,7 +201,10 @@ function renderOutputColors(nearestColorDisplayContainerSelection, colorArr) {
   individialNearbyColor
     .append('div')
     .text(d => `distance: ${d.distance.toFixed(0)}`)
-    .attr('class', 'text-xs text-gray-600 mt-2 hidden md:block')
+    .attr(
+      'class',
+      'text-xs dark:text-gray-400 text-gray-600 mt-2 hidden md:block',
+    )
 }
 
 // colorDependentClasses
