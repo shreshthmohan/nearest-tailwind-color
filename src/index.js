@@ -65,9 +65,15 @@ const colorInput = select('#color-input').attr('value', defaultColor)
 const showColor = select('#show-color')
 const colorError = select('#color-error')
 const showRgb = select('#show-rgb')
+const showHex = select('#show-hex')
+// TODO: need to format hsl when displaying it
+// const showHsl = select('#show-hsl')
 const showNearestTailwindColorContainer = select(
   '#show-nearest-tailwind-colors-container',
 )
+
+showRgb.text(color(defaultColor).formatRgb())
+showHex.text(color(defaultColor).formatHex())
 
 const differenceDefinitionSelect = select('#difference-definition')
 
@@ -110,6 +116,8 @@ colorInput.on('change input', e => {
 
   // showHex.text(color(e.target.value).formatHex())
   showRgb.text(color(e.target.value).formatRgb())
+  showHex.text(color(e.target.value).formatHex())
+  // showHsl.text(color(e.target.value).formatHsl())
   inputColor = e.target.value
 
   const nearestTwColors = nearestColor(
@@ -135,6 +143,8 @@ colorInputText.on('change input', e => {
     renderOutputColors(showNearestTailwindColorContainer, nearestTwColors)
     colorError.classed('visible', false).classed('invisible', true)
     showRgb.text(color(e.target.value).formatRgb())
+    showHex.text(color(e.target.value).formatHex())
+    // showHsl.text(color(e.target.value).formatHsl())
   } else {
     colorError.classed('visible', true).classed('invisible', false)
   }
